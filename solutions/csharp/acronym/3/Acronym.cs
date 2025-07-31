@@ -1,0 +1,31 @@
+using System;
+using System.Text.RegularExpressions;
+
+public static class Acronym
+{
+    public static string Abbreviate(string phrase)
+    {
+        // Remove special characters unless they are hyphens
+        string pattern = @"[^\w\s-]";
+        string replacement = "";
+        phrase = Regex.Replace(phrase, pattern, replacement);
+
+        // Split the phrase into words
+        string[] words = phrase.Split(new char[] {' ', '-'});
+
+        // Create an empty string to store the acronym
+        string acronym = "";
+
+        // Iterate through the words and add the first letter of each word to the acronym
+        if (!string.IsNullOrEmpty(acronym))
+        {
+            foreach (string word in words)
+            {
+                acronym += word[0].ToString().ToUpper();
+            }
+        }
+
+        // Return the acronym
+        return acronym;
+    }
+}
